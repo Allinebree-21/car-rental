@@ -1,0 +1,22 @@
+public class Car {
+ 
+ private int numberplate;
+ private boolean isAvailable;
+ private String brand;
+ 
+ public Car(String brand, int numberplate, boolean Available) 
+ {
+  this.numberplate = numberplate;
+  this.isAvailable = isAvailable;
+  this.brand = brand;
+ }
+ 
+ public void displayInfo() 
+ {
+ Scanner scanner = new Scanner(System.in);
+  System.out.println("Numberplate: " + numberplate);
+  System.out.println("isAvailable: " + isAvailable);
+  System.out.println("brand: " + brand);
+ }
+
+}
