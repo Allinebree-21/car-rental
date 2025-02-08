@@ -1,0 +1,39 @@
+public class RentalAgency {
+    private List<Car> cars;
+    private List<RentalTransaction> transactions;
+
+    public RentalAgency() {
+        this.cars = new ArrayList<>();
+        this.transactions = new ArrayList<>();
+    }
+
+    public void addCar(Car car) {
+        cars.add(car);
+    }
+
+    public RentalTransaction rentCar(Customer customer, String licensePlate) {
+        for (Car car : cars) {
+            if (car.getLicensePlate().equals(licensePlate) && !car.isRented()) {
+                car.rent();
+                RentalTransaction transaction = new RentalTransaction(car, customer, LocalDate.now());
+                transactions.add(transaction);
+                return transaction;
+            }
+        }
+        return null; 
+    }
+
+    public void returnCar(RentalTransaction transaction) {
+        transaction.returnCar(LocalDate.now());
+    }
+
+    public List<Car> getAvailableCars() {
+        List<Car> availableCars = new ArrayList<>();
+        for (Car car : cars) {
+            if (!car.isRented()) {
+                availableCars.add(car);
+            }
+        }
+        return availableCars;
+    }
+}
